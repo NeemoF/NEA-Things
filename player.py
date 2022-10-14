@@ -4,58 +4,56 @@ class Character():
         self.playerX = 0
         self.playerY = 0
         self.health = 100
-        self.playerClass = "Mage" 
+        self.playerClass = "" 
         self.alive = True
-        self.damage = 0
-        self.range = 0
-    
+
     class ability1():
         def __init__(this, playerClass):
             if playerClass == "Mage":
-                this.damage = 15
+                this.damage = 20
                 this.range = 20
             elif playerClass == "Warrior":
-                this.damage = 20
-                this.range = 5
+                this.damage = 30
+                this.range = 10
             elif playerClass == "Archer":
-                this.damage = 75
-                this.range = 125
+                this.damage = 10
+                this.range = 30
     
     class ability2():
         def __init__(this, playerClass):
             if playerClass == "Mage":
                 this.damage = 25
-                this.range = 5
+                this.range = 15
             elif playerClass == "Warrior":
-                this.damage = 130
+                this.damage = 35
                 this.range = 5
             elif playerClass == "Archer":
-                this.damage = 70
-                this.range = 135
+                this.damage = 20
+                this.range = 35
     
     class ability3():
         def __init__(this, playerClass):
             if playerClass == "Mage":
-                this.damage = 35
-                this.range = 104
+                this.damage = 15
+                this.range = 15
             elif playerClass == "Warrior":
-                this.damage = 127
-                this.range = 5
+                this.damage = 20
+                this.range = 3
             elif playerClass == "Archer":
-                this.damage = 79
-                this.range = 172
+                this.damage = 3
+                this.range = 20
 
     class ability4():
         def __init__(this, playerClass):
             if playerClass == "Mage":
-                this.damage = 102
-                this.range = 103
+                this.damage = 19
+                this.range = 14
             elif playerClass == "Warrior":
-                this.damage = 133
-                this.range = 143
+                this.damage = 27
+                this.range = 2
             elif playerClass == "Archer":
-                this.damage = 152
-                this.range = 69
+                this.damage = 200
+                this.range = 100
 
     def showStats(self):
         print("X: " + str(self.playerX), "\nY: " + str(self.playerY), "\nHealth: " + str(self.health), "\nDamage: " + str(self.damage), "\nRange: " + str(self.range), "\nAlive: " + str(self.alive), "\nClass: " + str(self.playerClass))

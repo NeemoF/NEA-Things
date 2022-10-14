@@ -54,7 +54,7 @@ def combat(character, enemy, array):
 def update(array, character):
     for x in range(4):
         array[x].updateDistance(character)
-        print("Enemy " + str(x+1), "- Distance: " + str(array[x].distance))
+        # print("Enemy " + str(x+1), "- Distance: " + str(array[x].distance))
     checkLocation(array, character)
 
 #player uses an attack
@@ -99,7 +99,7 @@ for x in range(4):
 character = Character()
 character.selectClass()
 #character.showStats()
-character.abilityStats()
+#character.abilityStats()
 
 
 #Run the game
