@@ -5,7 +5,8 @@ mainDirectory = os.getcwd()
 while True:
     dirlist = os.listdir()
     removedFiles = [".git", ".upm", "poetry.lock",
-                    "pyproject.toml", "README.md"]
+                    "pyproject.toml", "README.md", ".config", 											"replit.nix", "venv", ".replit", 				 
+                  	"__pycache__", ".cache"]
     for a in removedFiles:
         try:
             dirlist.remove(a)
