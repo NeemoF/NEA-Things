@@ -4,8 +4,10 @@ class Character():
         self.playerX = 0
         self.playerY = 0
         self.health = 100
-        self.playerClass = "" 
+        self.playerClass = "Mage" 
         self.alive = True
+        self.damage = 0
+        self.range = 0
     
     class ability1():
         def __init__(this, playerClass):
@@ -22,7 +24,7 @@ class Character():
     class ability2():
         def __init__(this, playerClass):
             if playerClass == "Mage":
-                this.damage = 105
+                this.damage = 25
                 this.range = 5
             elif playerClass == "Warrior":
                 this.damage = 130
@@ -34,7 +36,7 @@ class Character():
     class ability3():
         def __init__(this, playerClass):
             if playerClass == "Mage":
-                this.damage = 113
+                this.damage = 35
                 this.range = 104
             elif playerClass == "Warrior":
                 this.damage = 127
@@ -54,6 +56,9 @@ class Character():
             elif playerClass == "Archer":
                 this.damage = 152
                 this.range = 69
+
+    def showStats(self):
+        print("X: " + str(self.playerX), "\nY: " + str(self.playerY), "\nHealth: " + str(self.health), "\nDamage: " + str(self.damage), "\nRange: " + str(self.range), "\nAlive: " + str(self.alive), "\nClass: " + str(self.playerClass))
 
     def selectClass(self):
         check = False
@@ -109,3 +114,9 @@ class Character():
             return self.ability3.damage
         elif key == "4": 
             return self.ability4.damage
+    
+    def abilityStats(self):
+        print("Ability1 - Damage: " + str(self.ability1.damage), ", Range: " + str(self.ability1.range))
+        print("Ability2 - Damage: " + str(self.ability2.damage), ", Range: " + str(self.ability2.range))
+        print("Ability3 - Damage: " + str(self.ability3.damage), ", Range: " + str(self.ability3.range))
+        print("Ability4 - Damage: " + str(self.ability4.damage), ", Range: " + str(self.ability4.range))

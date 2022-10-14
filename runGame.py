@@ -19,12 +19,15 @@ def playerRequest(key, character, array):
         return True
     elif key == "end":
         return False
+    else:
+        return True
 
 #Update once per cycle to keep distances updated and check player location
 def checkLocation(array, character):
     for x in range(4):
         if character.playerX == array[x].locationX and character.playerY == array[x].locationY:
             #if the player lands on an enemy, it'll start an attack
+            print("Combat!")
             combat(character, array[x], array)
 
 # Called when player enters combat
@@ -51,7 +54,7 @@ def combat(character, enemy, array):
 def update(array, character):
     for x in range(4):
         array[x].updateDistance(character)
-        # print(array[x].distance)
+        print("Enemy " + str(x+1), "- Distance: " + str(array[x].distance))
     checkLocation(array, character)
 
 #player uses an attack
@@ -88,11 +91,16 @@ enemiesArray = []
 for x in range(4):
     enemiesArray.append(Enemy())
     enemiesArray[x].createEnemy()
-    print(enemiesArray[x].locationX, enemiesArray[x].locationY)
+    #print(  "Enemy " + str(x+1), 
+    #        "- LocationX: " +str(enemiesArray[x].locationX), 
+    #        ", LocationY: " + str(enemiesArray[x].locationY),)
 
 #create character and Set the class
 character = Character()
 character.selectClass()
+#character.showStats()
+character.abilityStats()
+
 
 #Run the game
 running = True
@@ -100,3 +108,4 @@ while running and character.alive:
     playerAction = input("Enter Command: ")
     running = playerRequest(playerAction, character, enemiesArray)
     update(enemiesArray, character)
+
