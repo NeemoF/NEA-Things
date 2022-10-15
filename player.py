@@ -73,15 +73,14 @@ class Character():
     
     def passiveAbility(self):
         number = randint(0,4)
-        if self.playerClass == "Mage":
-            if number == 3:
+        if number == 3:
+            if self.playerClass == "Mage":
                 return "healPlayer"
-        elif self.playerClass == "Warrior":
-            if number == 3:
+            elif self.playerClass == "Warrior":
                 return "damageEnemy"
-        elif self.playerClass == "Archer":
-            if number == 3:
+            elif self.playerClass == "Archer":
                 return "dodge"
+
 
     def playerMovement(self, key):
         if key == "w":
