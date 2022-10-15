@@ -91,7 +91,7 @@ enemiesArray = []
 for x in range(4):
     enemiesArray.append(Enemy())
     enemiesArray[x].createEnemy()
-    #print(  "Enemy " + str(x+1), 
+    # print(  "Enemy " + str(x+1), 
     #        "- LocationX: " +str(enemiesArray[x].locationX), 
     #        ", LocationY: " + str(enemiesArray[x].locationY),)
 
@@ -100,7 +100,6 @@ character = Character()
 character.selectClass()
 #character.showStats()
 #character.abilityStats()
-
 
 #Run the game
 running = True
