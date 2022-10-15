@@ -36,9 +36,11 @@ def combat(character, enemy, array):
     while character.alive and wonFight != True:
         passiveAbility = character.passiveAbility()
         eAttack = randint(0,4)
-        if eAttack == 3 and passiveAbility != "dodge":
+        if eAttack == 3 and passiveAbility == "dodge":
+            print("dodged")
+        elif eAttack == 3:
             character.health -= enemy.damage
-            print("Your Health = " + str(character.health) + "\n")
+            print("Player Health: " + str(character.health))
         else:
             playerAttack(enemy, character, passiveAbility)
         
