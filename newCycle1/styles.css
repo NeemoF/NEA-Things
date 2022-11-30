@@ -1,10 +1,10 @@
-* {
+ * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: arial;
     scroll-behavior: smooth; 
-}
+} 
 
 .navbar {
     background-color: black;
@@ -55,7 +55,7 @@
     align-items: center;
     width: 100%;
     position: relative;
-    left: 40%;
+    left: 32.5%;
 }
 
 .button{
