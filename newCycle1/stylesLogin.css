@@ -4,12 +4,14 @@
     font-family: sans-serif;
 }
 
-body{
+.page {
     background: linear-gradient(45deg, lightgreen, lightblue);
-    width: 99%;
-    padding: 0.01%;
-    height: 100%;
-}
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+  }
 
 .loginForm{
     border: solid;
@@ -33,9 +35,9 @@ body{
     transform: translate(20%, 40%) rotate(45deg);
     opacity: 20%;
     border-radius: 5px;
-} */
+}
 
-/* .square2{
+.square2{
     background-color: grey;
     width: 400px;
     height: 400px;

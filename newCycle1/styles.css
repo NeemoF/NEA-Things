@@ -6,6 +6,9 @@
     scroll-behavior: smooth; 
 } 
 
+body{
+    background-color: grey;
+}
 .navbar {
     background-color: black;
     height: 80px;
@@ -132,19 +135,40 @@
     margin-top: 20px;
 }
 .classHTP p{
-    font-size: 70px;
+    margin-top: 0;
+    font-size: 80px;
+    font-weight: 900;
 }
 
 .classHTPContainer{
     margin-top: 140px;
     margin-bottom: 140px;
     background-color: white;
-    border: 1px solid black;
-    width: 95%;
+    width: 97%;
     height: 400px;
+    box-shadow: 0 0 100px white;
 }
 
-.classHTPContainer img{
-    height: 100px;
-    width: 100px;
+.images img{
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+}
+
+.images_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+  width: 500px;  
+  margin: 40px;
+}
+
+.p1{
+    font-weight: 100;
+    font-size: 40px;
+    font-weight: 600;
+    font-style: italic;
 }
