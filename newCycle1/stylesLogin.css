@@ -28,25 +28,6 @@
     box-shadow: 0px 0px 5px lightgrey;
 }
 
-/* .square1{
-    background-color: white;
-    width: 300px;
-    height: 300px;
-    transform: translate(20%, 40%) rotate(45deg);
-    opacity: 20%;
-    border-radius: 5px;
-}
-
-.square2{
-    background-color: grey;
-    width: 400px;
-    height: 400px;
-    transform: translate(250%, -70%) rotate(45deg);
-    opacity: 20%;
-    border-radius: 5px;
-    z-index: 99;
-} */
-
 .loginForm h1 {
     font-size: 40px;
     text-align: center;
@@ -67,8 +48,12 @@
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
     text-decoration: inherit;
     transition: 0.2s ease;
+    outline: none;
 }
 
+.loginForm input:focus{
+    transition: 0.3s ease;
+}
 .loginForm input:focus::placeholder{
     color: transparent;
 }
