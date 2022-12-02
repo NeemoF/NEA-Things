@@ -13,6 +13,8 @@
     align-items: center;
     font-size: 1.2rem;
     z-index: 999;
+    border-bottom: 1px solid #232323;
+
 }
 
 .navbarContainer {
@@ -37,7 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 175px;
+    padding: 20px;
     text-decoration: none;
     height: 100%;
     transition: 0.3s;
@@ -49,26 +51,38 @@
     color: grey;
 }
 
+.selected{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-decoration: none;
+    height: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+    color: white;
+    background-color: grey;
+}
+
 .navbarBtn{
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin-left: 350px;
     position: relative;
-    left: 32.5%;
+    left: 30%;
 }
 
 .button{
     text-decoration: none;
     color: white;
-    display: flex;
-    justify-content: center;
+    width: 150px;
     align-items: center;
     background-color: #5cc9da;
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
-    width: 100px;
     padding: 10px;
     transition: all 0.3s ease;
 }
@@ -77,4 +91,60 @@
     color: grey;
     background-color: #6ba7b0;
     border-color: white;
+}
+
+.headerContainer{
+    background-color: black;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    background-color: #232323;
+    width: 1400px;
+    height: 500px;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.headerContainer h1{
+    color: white;
+    font-size: 100px;
+    background-image: linear-gradient(45deg, darkgrey, lightgrey);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+
+.chooseYour{    
+    font-size: 20px;
+}
+.classHTP{
+    margin-top: 20px;
+}
+.classHTP p{
+    font-size: 70px;
+}
+
+.classHTPContainer{
+    margin-top: 140px;
+    margin-bottom: 140px;
+    background-color: white;
+    border: 1px solid black;
+    width: 95%;
+    height: 400px;
+}
+
+.classHTPContainer img{
+    height: 100px;
+    width: 100px;
 }

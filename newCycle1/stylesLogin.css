@@ -5,26 +5,49 @@
 }
 
 body{
-    background-image: linear-gradient(45deg, #E1CCAE, black);
+    background: linear-gradient(45deg, lightgreen, lightblue);
+    width: 99%;
+    padding: 0.01%;
+    height: 100%;
 }
 
 .loginForm{
     border: solid;
-    background-color: #923C01;
-    border-radius: 25px;
+    border-width: 0px;
+    background: white;
+    border-radius: 5px;
     width: 350px;
+    height: 500px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    color: #fff;
+    color: black;
+    box-shadow: 0px 0px 5px lightgrey;
 }
 
+/* .square1{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    transform: translate(20%, 40%) rotate(45deg);
+    opacity: 20%;
+    border-radius: 5px;
+} */
+
+/* .square2{
+    background-color: grey;
+    width: 400px;
+    height: 400px;
+    transform: translate(250%, -70%) rotate(45deg);
+    opacity: 20%;
+    border-radius: 5px;
+    z-index: 99;
+} */
 
 .loginForm h1 {
     font-size: 40px;
     text-align: center;
-    text-transform: uppercase;
     margin: 40px 0 ;
 }
 
@@ -37,25 +60,46 @@ body{
     font-size: 16px;
     width: 90%;
     padding: 15px 10px;
-    margin: 10px;
-    border: 0;
-    outline: none;
-    border-radius: 5px;
+    margin: 1px;
+    border-width: 0 0 1px 0 ;
+    font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    text-decoration: inherit;
+    transition: 0.2s ease;
+}
+
+.loginForm input:focus::placeholder{
+    color: transparent;
 }
 
 .loginForm button {
     font-size: 18px;
     font-weight: bold;
-    margin: 20px 10px ;
+    margin: 50px 10px 5px 0px;
     padding: 10px 15px;
     width: 50%;
     border-radius: 5px;
     border: 0;
     box-shadow: 0 5px 0 0 #000;
-    transition: 0.0s ease;
+    transition: 0.1s ease;
 }
 
 .loginForm button:hover {
     translate: 0 5px;
     box-shadow: 0 0 ;
+    transition: 0.1s ease;
+    background: lightgrey;
+}
+
+.signUp{
+    font-size: 11px;
+    padding: 10px;
+}
+
+.signUp a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+.signUp a:hover{
+    color: grey;
 }
