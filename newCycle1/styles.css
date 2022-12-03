@@ -121,10 +121,9 @@ body{
 .headerContainer h1{
     color: white;
     font-size: 100px;
-    background-image: linear-gradient(45deg, lightgreen, lightblue, lightgreen, lightblue);
+    background-image: linear-gradient(45deg, lightgreen 0%, lightblue 50%, lightgreen, lightblue 100%);
     background-size: 200%;
-    background-position: left;
-    animation: gradient 15s ease infinite;
+    animation: gradient 5s ease infinite; 
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -138,12 +137,12 @@ body{
     0% {
         background-position: left;
     }
-    100% {
+    50% {
         background-position: right;
     }
-    /* 100% {
+    100% {
         background-position: left;
-    } */
+    }
 }
 
 .chooseYour{    
@@ -297,7 +296,7 @@ a{
     margin-top: 140px;
     background-color: #000913;
     width: 97%;
-    height: 700px;
+    height: 900px;
     box-shadow: 0 0 10px 100px #000913;
     z-index: 2;
     margin-bottom: 10px;
@@ -323,8 +322,8 @@ a{
 }
 
 .classImages{
-    width:200px;
-    height: 200px;
+    width: 256px;
+    height: 256px;
     margin: 10px;
 }
 
