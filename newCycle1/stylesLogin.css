@@ -10,12 +10,10 @@
     top:0px;
     right:0px;
     bottom:0px;
-    left:0px;
+    left:0px; 
   }
 
-.loginForm{
-    border: solid;
-    border-width: 0px;
+.loginForm{ 
     background: white;
     border-radius: 5px;
     width: 350px;
@@ -25,7 +23,6 @@
     transform: translate(-50%, -50%);
     position: absolute;
     color: black;
-    box-shadow: 0px 0px 5px lightgrey;
 }
 
 .loginForm h1 {
@@ -46,14 +43,9 @@
     margin: 1px;
     border-width: 0 0 1px 0 ;
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-    text-decoration: inherit;
-    transition: 0.2s ease;
     outline: none;
 }
 
-.loginForm input:focus{
-    transition: 0.3s ease;
-}
 .loginForm input:focus::placeholder{
     color: transparent;
 }
