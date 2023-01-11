@@ -28,3 +28,5 @@ thisList = [
 
 thisList[2]("James")
 thisList[0]()
+
+object.getName()

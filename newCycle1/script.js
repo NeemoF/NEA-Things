@@ -27,13 +27,16 @@ document.addEventListener("DOMContentLoaded", () =>{
         createEnemies()
         update()
     }
+    function createEnemy(i){
+        enemiesArray.push(new Enemy())
+        enemiesArray[i].createEnemy()
+        var random = Math.random() <= 0.5 ? "enemy1" : "enemy2"
+        squares[enemiesArray[i].calcLocation()].classList.add(random)
+    }
 
     function createEnemies(){
         for (let i=0; i<4; i++){
-            enemiesArray.push(new Enemy())
-            enemiesArray[i].createEnemy()
-            var random = Math.random() <= 0.5 ? "enemy1" : "enemy2"
-            squares[enemiesArray[i].calcLocation()].classList.add(random)
+            createEnemy(i)
         }
     }
 
@@ -51,10 +54,7 @@ document.addEventListener("DOMContentLoaded", () =>{
                         enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
                         squares[squaresLocation].classList.remove("enemy1")
                         squares[squaresLocation].classList.remove("enemy2")
-                        enemiesArray.push(new Enemy())
-                        enemiesArray[3].createEnemy()
-                        var random = Math.random() <= 0.5 ? "enemy1" : "enemy2"
-                        squares[enemiesArray[3].calcLocation()].classList.add(random)
+                        createEnemy(3)
                     }
                 }
             })

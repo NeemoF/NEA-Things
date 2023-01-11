@@ -327,3 +327,50 @@ a{
     height: 80%;
     font-size: 50px;
 }
+
+/* Game */
+.player{
+    background-image: url("Images/warriorImage.png");
+    background-size: 25px;
+}
+
+.debug{
+    background-color: green;
+}
+
+.flex{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 625px;
+    height: 625px;
+    border: 0px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("Images/background.png");
+}
+
+.flex div {
+	width: 25px;
+	height: 25px;
+	border: 0px solid black;
+}
+
+.enemy1{
+    background-image: url("Images/genericEnemy.png");
+    background-size: 25px;
+}
+
+.enemy2{
+    background-image: url("Images/genericEnemy2.png");
+    background-size: 25px;
+}
+
+#healthBar{
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
