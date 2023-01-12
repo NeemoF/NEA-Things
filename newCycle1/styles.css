@@ -22,7 +22,6 @@ body{
     display: flex;
     height: 80px;
     width: 100%;
-    max-width: 1300px;
 }
 
 .navbarMenu{
@@ -69,9 +68,10 @@ body{
     text-align: center;
     justify-content: center;
     align-items: center;
-    /* margin-left: 350px; */
+    margin-left: auto;
+    margin-right: 20px;
     position: relative;
-    right: -55%;
+    /* right: -55%; */
 }
 
 .button{
@@ -338,7 +338,7 @@ a{
 
 .player{
     background-image: url("Images/warriorImage.png");
-    background-size: 25px;
+    background-size: 30px;
 }
 
 .debug{
@@ -348,8 +348,8 @@ a{
 #grid{
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 625px;
-    height: 625px;
+    width: 750px;
+    height: 750px;
     border: 0px solid black;
     display: flex;
     flex-wrap: wrap;
@@ -362,19 +362,19 @@ a{
 }
 
 #grid div {
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	border: 0px solid black;
 }
 
 .enemy1{
     background-image: url("Images/genericEnemy.png");
-    background-size: 25px;
+    background-size: 30px;
 }
 
 .enemy2{
     background-image: url("Images/genericEnemy2.png");
-    background-size: 25px;
+    background-size: 30px;
 }
 
 #healthBar{
