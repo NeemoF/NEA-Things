@@ -4,6 +4,7 @@ export class Player{
     this.playerY = 12;
     this.health = 100;
     this.playerClass = "";
+    this.alive = true
   }
   
   calcLocation() {

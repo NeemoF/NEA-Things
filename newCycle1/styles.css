@@ -329,6 +329,13 @@ a{
 }
 
 /* Game */
+
+.contentContainer{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
 .player{
     background-image: url("Images/warriorImage.png");
     background-size: 25px;
@@ -338,7 +345,7 @@ a{
     background-color: green;
 }
 
-.flex{
+#grid{
     margin-top: 10px;
     margin-bottom: 10px;
     width: 625px;
@@ -347,9 +354,14 @@ a{
     display: flex;
     flex-wrap: wrap;
     background-image: url("Images/background.png");
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
 }
 
-.flex div {
+#grid div {
 	width: 25px;
 	height: 25px;
 	border: 0px solid black;
@@ -369,8 +381,21 @@ a{
     width: 200px;
     height: 30px;
     border: 1px solid black;
-    margin-left: 100px;
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
+    position: fixed;
+    left: 71%;
+    top: 95%;
+}
+
+#combat{
+    width: 1100px;
+    height: 600px;
+    background: transparent;
+    background-image: none;
+    position: absolute;
+    left: 50%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }

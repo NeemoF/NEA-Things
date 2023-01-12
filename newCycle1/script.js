@@ -1,9 +1,9 @@
 import { Player, Enemy } from "./characters.js";
 
-
 document.addEventListener("DOMContentLoaded", () =>{
     const grid = document.getElementById("grid") // get the grid
     const healthBarContainer = document.getElementById("healthBar")
+    const combatScreen = document.getElementById("combat")
     const width = 25
     const height = 25
     const maxHealth = 100
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         createEnemies()
         update()
     }
+
     function createEnemy(i){
         enemiesArray.push(new Enemy())
         enemiesArray[i].createEnemy()
@@ -41,28 +42,53 @@ document.addEventListener("DOMContentLoaded", () =>{
     }
 
     function update(){
-        squares[squaresLocation].classList.remove("player")
+        squares[squaresLocation].classList.remove("player");
         squaresLocation = player.calcLocation()
         
         if (squares[squaresLocation].classList.contains("enemy1") || squares[squaresLocation].classList.contains("enemy2")){
-            var enemyY = Math.floor(squaresLocation / width)
-            var enemyX = squaresLocation % width
-            enemiesArray.forEach(enemy => {
-                if (enemy.enemyX == enemyX && enemy.enemyY == enemyY){
-                    enemy.health -= 1000
-                    if (enemy.health <= 0){
-                        enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
-                        squares[squaresLocation].classList.remove("enemy1")
-                        squares[squaresLocation].classList.remove("enemy2")
-                        createEnemy(3)
-                    }
-                }
-            })
+            
+            combat()
+            
             player.health -= 10
         }
+
         squares[squaresLocation].classList.add("player")
+        healthBar()
+    }
+
+    function combat(){
         
-        setTimeout(healthBar, 1)
+        combatScreen.style.background= "white";
+        combatScreen.style.backgroundImage = 'url("Images/combat.png")';
+        healthBarContainer.style.top = "50%"
+        document.removeEventListener("keydown", playerMovemove)
+        
+        setTimeout(function(){ 
+            combatScreen.style.background= "transparent";
+            healthBarContainer.style.top = "95%";
+            combatScreen.style.backgroundImage = 'none';
+            if (player.alive === true){
+                document.addEventListener("keydown", playerMovemove)
+            }
+        }, 3000)
+        
+        var enemyY = Math.floor(squaresLocation / width)
+        var enemyX = squaresLocation % width
+            
+        enemiesArray.forEach(enemy => {
+            
+            if (enemy.enemyX == enemyX && enemy.enemyY == enemyY){
+                enemy.health -= 1000
+                
+                if (enemy.health <= 0){
+
+                    enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
+                    squares[squaresLocation].classList.remove("enemy1")
+                    squares[squaresLocation].classList.remove("enemy2")
+                    createEnemy(3)
+                }
+            }
+        })
     }
 
     function healthBar(){
@@ -70,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () =>{
         healthBarContainer.style.background = "linear-gradient(to right, red " + playerHealthPercentage + "%, white " + playerHealthPercentage + "%)"
 
         if (player.health <= 0){ 
-            
             document.removeEventListener("keydown", playerMovemove)
             setTimeout(function(){ window.alert("You died!") }, 1)
         }
@@ -78,27 +103,30 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     function playerMovemove(e){
         switch(e.keyCode){
-            case 37:
+            case 65:
+            case 37 :
                 if (squaresLocation % 25 !=0 ){
                     player.playerX -= 1
                     update()
                 }
                 break
 
+            case 87:
             case 38:
                 if (squaresLocation - width >= 0){
                     player.playerY -= 1
                     update()
                 }
                 break
-
+            case 68:
             case 39:
                 if (squaresLocation % width != 24){
                     player.playerX += 1
                     update()
                 }
                 break
-
+            
+            case 83:
             case 40:
                 if (squaresLocation + width <= 624){
                     player.playerY += 1
@@ -109,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     onStart()
     document.addEventListener("keydown", playerMovemove)
+
 
     window.addEventListener("keydown", function(e) { // space and arrow keys 
         if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);
