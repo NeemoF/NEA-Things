@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", () =>{
     const width = 25
     const height = 25
     const maxHealth = 100
+    var screenWidth = window.innerWidth
+    var screenHeight = window.innerHeight
     var player = new Player()
     var squaresLocation = player.calcLocation()
     var enemiesArray = []
     var squares = []
+
+    const mouse = {
+        x: screenWidth/2,
+        y: screenHeight/2,
+        click: false
+    }
 
     function createGrid(){
         for (let i=0; i<625; i++){
@@ -49,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             
             combat()
             
-            player.health -= 10
+            // player.health -= 50
         }
 
         squares[squaresLocation].classList.add("player")
@@ -57,38 +65,42 @@ document.addEventListener("DOMContentLoaded", () =>{
     }
 
     function combat(){
-        
         combatScreen.style.background= "white";
         combatScreen.style.backgroundImage = 'url("Images/combat.png")';
         healthBarContainer.style.top = "50%"
         document.removeEventListener("keydown", playerMovemove)
         
-        setTimeout(function(){ 
-            combatScreen.style.background= "transparent";
-            healthBarContainer.style.top = "95%";
-            combatScreen.style.backgroundImage = 'none';
-            if (player.alive === true){
-                document.addEventListener("keydown", playerMovemove)
-            }
-        }, 3000)
-        
         var enemyY = Math.floor(squaresLocation / width)
         var enemyX = squaresLocation % width
-            
         enemiesArray.forEach(enemy => {
-            
+        
             if (enemy.enemyX == enemyX && enemy.enemyY == enemyY){
-                enemy.health -= 1000
-                
-                if (enemy.health <= 0){
+                var i = 0
+                while ((player.health > 0 && enemy.health > 0) && i < 1000){
+                    playerAttack()
+                    
+                    if (enemy.health <= 0 || i===999){
 
-                    enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
-                    squares[squaresLocation].classList.remove("enemy1")
-                    squares[squaresLocation].classList.remove("enemy2")
-                    createEnemy(3)
-                }
+                        enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
+                        squares[squaresLocation].classList.remove("enemy1")
+                        squares[squaresLocation].classList.remove("enemy2")
+                        createEnemy(3)
+                    }
+
+                    i++
             }
-        })
+        }
+    })
+        combatScreen.style.background= "transparent";
+        healthBarContainer.style.top = "95%";
+        combatScreen.style.backgroundImage = 'none';
+        if (player.alive === true){
+            document.addEventListener("keydown", playerMovemove)
+        }
+    }
+
+    function playerAttack() {
+        console.log(mouse.x)
     }
 
     function healthBar(){
@@ -97,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
         if (player.health <= 0){ 
             document.removeEventListener("keydown", playerMovemove)
+            player.alive=false
             setTimeout(function(){ window.alert("You died!") }, 1)
         }
     }
@@ -134,10 +147,15 @@ document.addEventListener("DOMContentLoaded", () =>{
                 }
         }
     }
+    
+    combatScreen.addEventListener("mousedown", function(event) {
+        mouse.click = true
+        mouse.x = event.x
+        mouse.y = event.y 
+    })
 
     onStart()
     document.addEventListener("keydown", playerMovemove)
-
 
     window.addEventListener("keydown", function(e) { // space and arrow keys 
         if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);

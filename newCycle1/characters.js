@@ -3,6 +3,7 @@ export class Player{
     this.playerX = 12;
     this.playerY = 12;
     this.health = 100;
+    this.damage = 10;
     this.playerClass = "";
     this.alive = true
   }
