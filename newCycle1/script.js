@@ -75,33 +75,43 @@ document.addEventListener("DOMContentLoaded", () =>{
         enemiesArray.forEach(enemy => {
         
             if (enemy.enemyX == enemyX && enemy.enemyY == enemyY){
-                var i = 0
-                while ((player.health > 0 && enemy.health > 0) && i < 1000){
-                    playerAttack()
+                document.addEventListener("click", playerAttack)
+                
+                
+                // var i = 0
+                // while ((player.health > 0 && enemy.health > 0) && i < 1000){
+                //     playerAttack()
                     
-                    if (enemy.health <= 0 || i===999){
+                //     if (enemy.health <= 0 || i===999){
 
-                        enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
-                        squares[squaresLocation].classList.remove("enemy1")
-                        squares[squaresLocation].classList.remove("enemy2")
-                        createEnemy(3)
-                    }
+                //         enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
+                //         squares[squaresLocation].classList.remove("enemy1")
+                //         squares[squaresLocation].classList.remove("enemy2")
+                //         createEnemy(3)
+                //     }
 
-                    i++
+                //     i++
             }
-        }
-    })
-        combatScreen.style.background= "transparent";
-        healthBarContainer.style.top = "95%";
-        combatScreen.style.backgroundImage = 'none';
-        if (player.alive === true){
-            document.addEventListener("keydown", playerMovemove)
-        }
+        })
+        
+        setInterval(function(){
+            combatScreen.style.background= "transparent";
+            healthBarContainer.style.top = "95%";
+            combatScreen.style.backgroundImage = 'none';
+            if (player.alive === true){
+                document.addEventListener("keydown", playerMovemove)
+            }
+        }, 5000)
     }
 
     function playerAttack() {
         console.log(mouse.x)
+        
+        if (263 < mouse.x < 509){
+            console.log("cry")
+        }
     }
+
 
     function healthBar(){
         var playerHealthPercentage = (player.health/maxHealth * 100).toString()
