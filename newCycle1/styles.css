@@ -383,7 +383,8 @@ a{
     border: 1px solid black;
     display: flex;
     align-items: center;
-    position: fixed;
+    position: relative;
+    margin-top: 20px;
     left: 71%;
     top: 95%;
 }
