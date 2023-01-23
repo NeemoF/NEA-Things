@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import os, json
 
 app = Flask(__name__)
 
@@ -26,8 +27,8 @@ def leaderboards():
 def login():
     
     accountsDict = {"Usename": "Password"}
-    
-    with open("accounts.txt", "r") as f:
+    document_path = "accounts.json"
+    with open(document_path, "r") as f:
         for line in f:
             (key, val) = line.split()
             accountsDict[key] = val
