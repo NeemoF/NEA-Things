@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
         var bar1 = Math.floor(playerHealthPercentageInt/33) + 1
         var bar2 = Math.floor(enemyHealthPercentage/25)
-        combatBackground = "url(Images/combatScreens/combat" + bar1 + "-" + bar2 + ".png?w=1100px)"
+        combatBackground = "url(Images/combatScreens/combat" + bar1 + "-" + bar2 + ".png)"
         combatScreen.style.backgroundImage= combatBackground
         
         var random = Math.floor(Math.random() * 4)
