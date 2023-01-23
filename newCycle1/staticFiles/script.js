@@ -7,12 +7,14 @@ document.addEventListener("DOMContentLoaded", () =>{
     const width = 25
     const height = 25
     const maxHealth = 100
+    var combatBackground = 'url("Images/combatScreens/combat4-4.png")'
     var screenWidth = window.innerWidth
     var screenHeight = window.innerHeight
     var player = new Player()
     var squaresLocation = player.calcLocation()
     var enemiesArray = []
     var squares = []
+    var currentEnemy
 
     const mouse = {
         x: screenWidth/2,
@@ -53,11 +55,8 @@ document.addEventListener("DOMContentLoaded", () =>{
         squares[squaresLocation].classList.remove("player");
         squaresLocation = player.calcLocation()
         
-        if (squares[squaresLocation].classList.contains("enemy1") || squares[squaresLocation].classList.contains("enemy2")){
-            
+        if (squares[squaresLocation].classList.contains("enemy1") || squares[squaresLocation].classList.contains("enemy2")){            
             combat()
-            
-            // player.health -= 50
         }
 
         squares[squaresLocation].classList.add("player")
@@ -66,50 +65,62 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     function combat(){
         combatScreen.style.background= "white";
-        combatScreen.style.backgroundImage = 'url("Images/combat.png")';
-        healthBarContainer.style.top = "50%"
-        document.removeEventListener("keydown", playerMovemove)
-        
+        combatScreen.style.backgroundImage = combatBackground;   
+        document.removeEventListener("keydown", playerMovemove)     
         var enemyY = Math.floor(squaresLocation / width)
         var enemyX = squaresLocation % width
+
         enemiesArray.forEach(enemy => {
-        
             if (enemy.enemyX == enemyX && enemy.enemyY == enemyY){
+                currentEnemy = enemy
                 document.addEventListener("click", playerAttack)
-                
-                
-                // var i = 0
-                // while ((player.health > 0 && enemy.health > 0) && i < 1000){
-                //     playerAttack()
-                    
-                //     if (enemy.health <= 0 || i===999){
-
-                //         enemiesArray.splice(enemiesArray.indexOf(enemy), 1)
-                //         squares[squaresLocation].classList.remove("enemy1")
-                //         squares[squaresLocation].classList.remove("enemy2")
-                //         createEnemy(3)
-                //     }
-
-                //     i++
+                playerAttack()
             }
         })
+    }
+
+    function playerAttack() {
         
-        setInterval(function(){
+        var enemyHealthPercentage = (currentEnemy.health/maxHealth * 100).toString()
+        var playerHealthPercentageInt = (player.health/maxHealth * 100).toString()
+
+        var bar1 = Math.floor(playerHealthPercentageInt/33) + 1
+        var bar2 = Math.floor(enemyHealthPercentage/25)
+        combatBackground = "url(Images/combatScreens/combat" + bar1 + "-" + bar2 + ".png?w=1100px)"
+        combatScreen.style.backgroundImage= combatBackground
+        
+        var random = Math.floor(Math.random() * 4)
+        if (random != 0){
+            if (player.health > 0 && currentEnemy.health > 0){
+                if (mouse.x > 263  && mouse.x < 509){
+                    currentEnemy.health -= 10
+                } else if (mouse.x > 516 && mouse.x < 768){
+                    currentEnemy.health -= 10
+                } else if (mouse.x > 790 && mouse.x < 1022){
+                    currentEnemy.health -= 10
+                } else if (mouse.x > 1034 && mouse.x < 1278){
+                    currentEnemy.health -= 10
+                }
+            }
+        }   else {
+            player.health -= currentEnemy.damage
+        }
+        
+        if (currentEnemy.health <= 0 || player.health <= 0){
             combatScreen.style.background= "transparent";
-            healthBarContainer.style.top = "95%";
             combatScreen.style.backgroundImage = 'none';
             if (player.alive === true){
                 document.addEventListener("keydown", playerMovemove)
             }
-        }, 5000)
-    }
 
-    function playerAttack() {
-        console.log(mouse.x)
-        
-        if (263 < mouse.x < 509){
-            console.log("cry")
+            document.removeEventListener("click", playerAttack)
+            enemiesArray.splice(enemiesArray.indexOf(currentEnemy), 1)
+            squares[squaresLocation].classList.remove("enemy1")
+            squares[squaresLocation].classList.remove("enemy2")
+            createEnemy(3)
+            mouse.x = 0
         }
+        healthBar()
     }
 
 

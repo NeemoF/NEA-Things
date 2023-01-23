@@ -177,8 +177,8 @@ body{
 }
 
 .text{
-  width: 500px;  
-  margin: 40px;
+    width: 500px;  
+    margin: 40px;
 }
 
 .p1{
@@ -347,7 +347,6 @@ a{
 
 #grid{
     margin-top: 10px;
-    margin-bottom: 10px;
     width: 625px;
     height: 625px;
     border: 0px solid black;
@@ -357,8 +356,7 @@ a{
     position: absolute;
     z-index: 0;
     left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0px);
 }
 
 #grid div {
@@ -384,15 +382,13 @@ a{
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 20px;
-    left: 71%;
-    top: 95%;
+    left: 36%;
+    transform: translate(-100px, 2120%);
 }
 
 #combat{
     width: 1100px;
     height: 600px;
-    background: transparent;
     background-image: none;
     position: absolute;
     left: 50%;
