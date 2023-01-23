@@ -1,7 +1,7 @@
 import { Player, Enemy } from "./characters.js";
 
 document.addEventListener("DOMContentLoaded", () =>{
-    const grid = document.getElementById("grid") // get the grid
+    const grid = document.getElementById("grid")
     const healthBarContainer = document.getElementById("healthBar")
     const combatScreen = document.getElementById("combat")
     const width = 25
@@ -79,26 +79,26 @@ document.addEventListener("DOMContentLoaded", () =>{
         })
     }
 
-    function playerAttack() {
-        
+    function playerAttack() { // 593 625
+        console.log(mouse.y)
         var enemyHealthPercentage = (currentEnemy.health/maxHealth * 100).toString()
         var playerHealthPercentageInt = (player.health/maxHealth * 100).toString()
 
         var bar1 = Math.floor(playerHealthPercentageInt/33) + 1
         var bar2 = Math.floor(enemyHealthPercentage/25)
-        combatBackground = "url(Images/combatScreens/combat" + bar1 + "-" + bar2 + ".png)"
+        combatBackground = 'url(static/Images/combatScreens/combat' + bar1 + '-' + bar2 + '.png)'
         combatScreen.style.backgroundImage= combatBackground
         
         var random = Math.floor(Math.random() * 4)
         if (random != 0){
             if (player.health > 0 && currentEnemy.health > 0){
-                if (mouse.x > 263  && mouse.x < 509){
+                if (mouse.x > 263  && mouse.x < 509 && mouse.y > 593 && mouse.y < 625){
                     currentEnemy.health -= 10
-                } else if (mouse.x > 516 && mouse.x < 768){
+                } else if (mouse.x > 516 && mouse.x < 768 && mouse.y > 593 && mouse.y < 625){
                     currentEnemy.health -= 10
-                } else if (mouse.x > 790 && mouse.x < 1022){
+                } else if (mouse.x > 790 && mouse.x < 1022 && mouse.y > 593 && mouse.y < 625){
                     currentEnemy.health -= 10
-                } else if (mouse.x > 1034 && mouse.x < 1278){
+                } else if (mouse.x > 1034 && mouse.x < 1278 && mouse.y > 593 && mouse.y < 625){
                     currentEnemy.health -= 10
                 }
             }

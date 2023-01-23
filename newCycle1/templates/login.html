@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="stylesLogin.css">
+    <link rel="stylesheet" href="static/stylesLogin.css">
     <title>NeemoF Pog Game</title>
 </head> 
 <body>
     <div class="page">
         <div class="loginForm">
             <h1>Login</h1>
-            <form action="/newCycle1/index.html">
+            <form action="" method="post">
                 
                 <p>Username</p>
-                <center><input type="text" name="user" placeholder='&#xf007; Username'></center>
+                <center><input type="text" name="username" placeholder='&#xf007; Username' value="{{ request.form.username }}"></center>
                 <p>Password</p>
-                <center><input type="password" name="password" placeholder='&#xf023; Password'></center>
-                
+                <center><input type="password" name="password" placeholder='&#xf023; Password' value="{{request.form.password }}"></center>
+                {% if error %}
+                <p id="error"><strong>Error: </strong>{{ error }}</p>
+                {% else %}
+                <p id="error2"></p>
+                {% endif %}
                 <center><button type="submit">Login</button>
                 <div class="signUp">Don't have an account? <a href="signup.html">Sign up</a></div></center>
             </form>

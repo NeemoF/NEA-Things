@@ -53,13 +53,14 @@
 .loginForm button {
     font-size: 18px;
     font-weight: bold;
-    margin: 50px 10px 5px 0px;
+    margin: 25px 10px 5px 0px;
     padding: 10px 15px;
     width: 50%;
     border-radius: 5px;
     border: 0;
     box-shadow: 0 5px 0 0 #000;
     transition: 0.1s ease;
+    position: sticky;
 }
 
 .loginForm button:hover {
@@ -81,4 +82,13 @@
 
 .signUp a:hover{
     color: grey;
+}
+
+#error{
+    font-size: 10px;
+}
+
+#error2{
+    width: 10px;
+    height: 10px;
 }
