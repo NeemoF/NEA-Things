@@ -26,21 +26,26 @@ def leaderboards():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     
-    accountsDict = {"Usename": "Password"}
-    document_path = "accounts.json"
-    with open(document_path, "r") as f:
-        for line in f:
-            (key, val) = line.split()
-            accountsDict[key] = val
-    
+    with open("newCycle1/accounts.json", "r") as f:
+        accountsDict = json.load(f)
     
     error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect("/index")
+    if request.method == "POST":
+        try:
+            username = request.form['username']
+            if accountsDict[username]["Password"] == request.form['password']:
+                return redirect("/index")
+            else:
+                error = 'Invalid Password. Please try again.'
+        except:
+            error = 'Invalid Username. Please try again.'
     return render_template('login.html', error=error)
+
+    #     if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+    #         error = 'Invalid Credentials. Please try again.'
+    #     else:
+    #         return redirect("/index")
+    # return render_template('login.html', error=error)
 
 app.run(host='0.0.0.0', port=81, debug=True)
 

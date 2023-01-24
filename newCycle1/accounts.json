@@ -1,0 +1,4 @@
+{
+    "Admin": {"Password": "admin1", "AccountType" : "Admin"},
+    "Player1" : {"Password": "player1", "AccountType" : "Player"}
+}
