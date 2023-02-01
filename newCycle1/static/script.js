@@ -1,20 +1,24 @@
 import { Player, Enemy } from "./characters.js";
+import info from "/static/accounts.json" assert { type: "json" };
 
 document.addEventListener("DOMContentLoaded", () =>{
     const grid = document.getElementById("grid")
     const healthBarContainer = document.getElementById("healthBar")
     const combatScreen = document.getElementById("combat")
+    const endGameBtn = document.getElementById("Endgame")
     const width = 25
     const height = 25
     const maxHealth = 100
     var combatBackground = 'url("Images/combatScreens/combat4-4.png")'
     var screenWidth = window.innerWidth
     var screenHeight = window.innerHeight
-    var player = new Player()
-    var squaresLocation = player.calcLocation()
     var enemiesArray = []
     var squares = []
+    var player = new Player()
+    var squaresLocation = player.calcLocation()
     var currentEnemy
+    var data
+    var username
 
     const mouse = {
         x: screenWidth/2,
@@ -32,10 +36,35 @@ document.addEventListener("DOMContentLoaded", () =>{
     }
 
     function onStart(){
-        createGrid()
-        squares[squaresLocation].classList.add("player")
-        createEnemies()
-        update()
+        data = document.getElementById("data")
+        if (data != null){
+            convertData(data)
+            createGrid()
+            squares[squaresLocation].classList.add("player")
+            createEnemies()
+            update()
+        }
+    }
+
+    function convertData(data){
+        data = data.innerHTML
+        var newData = ""
+        console.log(data)
+        for (let i = 0; i <= data.length - 1; i++){
+            if (data[i] == "'"){
+                newData = newData + '"'
+            }
+            else {
+                newData = newData + data[i]
+            }
+        }
+
+        data = JSON.parse(newData)
+        username = Object.keys(data)
+        for (let item in data[username]){
+            player[item] = data[username][item]
+        }
+        squaresLocation = player.calcLocation()
     }
 
     function createEnemy(i){
@@ -79,8 +108,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         })
     }
 
-    function playerAttack() { // 593 625
-        console.log(mouse.y)
+    function playerAttack() {
         var enemyHealthPercentage = (currentEnemy.health/maxHealth * 100).toString()
         var playerHealthPercentageInt = (player.health/maxHealth * 100).toString()
 
@@ -89,8 +117,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         combatBackground = 'url(static/Images/combatScreens/combat' + bar1 + '-' + bar2 + '.png)'
         combatScreen.style.backgroundImage= combatBackground
         
-        var random = Math.floor(Math.random() * 4)
-        if (random != 0){
+        if (Math.floor(Math.random() * 4) != 0){
             if (player.health > 0 && currentEnemy.health > 0){
                 if (mouse.x > 263  && mouse.x < 509 && mouse.y > 593 && mouse.y < 625){
                     currentEnemy.health -= 10
@@ -140,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             case 65:
             case 37 :
                 if (squaresLocation % 25 !=0 ){
-                    player.playerX -= 1
+                    player.LocationX -= 1
                     update()
                 }
                 break
@@ -148,14 +175,14 @@ document.addEventListener("DOMContentLoaded", () =>{
             case 87:
             case 38:
                 if (squaresLocation - width >= 0){
-                    player.playerY -= 1
+                    player.LocationY -= 1
                     update()
                 }
                 break
             case 68:
             case 39:
                 if (squaresLocation % width != 24){
-                    player.playerX += 1
+                    player.LocationX += 1
                     update()
                 }
                 break
@@ -163,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             case 83:
             case 40:
                 if (squaresLocation + width <= 624){
-                    player.playerY += 1
+                    player.LocationY += 1
                     update()
                 }
         }
@@ -176,7 +203,16 @@ document.addEventListener("DOMContentLoaded", () =>{
     })
 
     onStart()
+
+
     document.addEventListener("keydown", playerMovemove)
+    
+    endGameBtn.addEventListener("click", function(){
+        console.log(info[username])
+        delete info[username]
+        info[username] = player.convertToJSON()
+        console.log(info)
+    })
 
     window.addEventListener("keydown", function(e) { // space and arrow keys 
         if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);

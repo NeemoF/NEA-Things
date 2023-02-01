@@ -1,0 +1,26 @@
+{
+    "Admin": {
+        "Password": "admin1",
+        "AccountType": "Admin",
+        "LocationX": 15,
+        "LocationY": 12
+    },
+    "Player1": {
+        "Password": "player1",
+        "AccountType": "Player",
+        "LocationX": 12,
+        "LocationY": 12
+    },
+    "NeemoF": {
+        "Password": "Login!!!!",
+        "AccountType": "newPlayer",
+        "LocationX": 12,
+        "LocationY": 12
+    },
+    "DaddyBoi": {
+        "Password": "L@vaGirl123",
+        "AccountType": "newPlayer",
+        "LocationX": 12,
+        "LocationY": 12
+    }
+}

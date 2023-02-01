@@ -9,7 +9,7 @@
     <div class="page">
         <div class="loginForm">
             <h1>Login</h1>
-            <form action="" method="post">
+            <form action="" method="post" id="formElem">
                 
                 <p>Username</p>
                 <center><input type="text" name="username" placeholder='&#xf007; Username' value="{{ request.form.username }}"></center>
@@ -21,9 +21,11 @@
                 <p id="error2"></p>
                 {% endif %}
                 <center><button type="submit" value="login">Login</button>
-                <div class="signUp">Don't have an account? <a href="signup.html">Sign up</a></div></center>
+                <div class="signUp">Don't have an account? <a href="/signup">Sign up</a></div></center>
             </form>
         </div>
     </div>
+
+    <script></script>
 </body>
 </html>

@@ -330,31 +330,20 @@ a{
 
 /* Game */
 
-.contentContainer{
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-}
-
 .player{
     background-image: url("Images/warriorImage.png");
     background-size: 25px;
 }
 
-.debug{
-    background-color: green;
-}
 
 #grid{
     margin-top: 10px;
     width: 625px;
     height: 625px;
-    border: 0px solid black;
     display: flex;
     flex-wrap: wrap;
     background-image: url("Images/background.png");
     position: absolute;
-    z-index: 0;
     left: 50%;
     transform: translate(-50%, 0px);
 }
@@ -362,7 +351,6 @@ a{
 #grid div {
 	width: 25px;
 	height: 25px;
-	border: 0px solid black;
 }
 
 .enemy1{
@@ -395,4 +383,11 @@ a{
     top: 57%;
     transform: translate(-50%, -50%);
     z-index: 10;
+}
+
+.playerData{
+    width: 1px;
+    font-size: 0px;
+    height: 1px;
+    color: white;
 }

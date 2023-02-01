@@ -26,6 +26,12 @@
         <div id="healthBar">Health</div>
     </div>
     
-    <script src="static/script.js" type="module"></script>
+        {% if data %}
+        <div id="data" class="PlayerData">{{ data }}</div>
+        {% endif %}
+        
+    <div><button id="Endgame">End Game</button></div>
+    <script src="static/script.js" type="module">
+    </script>
 </body>
 </html>
