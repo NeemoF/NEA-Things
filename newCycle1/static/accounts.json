@@ -22,5 +22,11 @@
         "AccountType": "newPlayer",
         "LocationX": 12,
         "LocationY": 12
+    },
+    "admin1": {
+        "Password": "P@ssword1",
+        "AccountType": "newPlayer",
+        "LocationX": 12,
+        "LocationY": 12
     }
 }
